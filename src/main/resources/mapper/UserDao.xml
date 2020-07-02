@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mybatis.dao.UserDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.example.mybatis.entity.User">
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="real_name" property="realName"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `create_time`,
+        `update_time`,
+        `user_name`,
+        `real_name`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user (
+            `create_time`,
+            `update_time`,
+            `user_name`,
+            `real_name`
+        ) VALUES (
+            #{pojo.createTime},
+            #{pojo.updateTime},
+            #{pojo.userName},
+            #{pojo.realName}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+            <if test="pojo.updateTime!=null"> `update_time`,</if>
+            <if test="pojo.userName!=null"> `user_name`,</if>
+            <if test="pojo.realName!=null"> `real_name`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+            <if test="pojo.updateTime!=null">#{pojo.updateTime},</if>
+            <if test="pojo.userName!=null">#{pojo.userName},</if>
+            <if test="pojo.realName!=null">#{pojo.realName},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.createTime},
+            #{pojo.updateTime},
+            #{pojo.userName},
+            #{pojo.realName}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
+            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime}, </if>
+            <if test="pojo.userName != null"> `user_name` = #{pojo.userName}, </if>
+            <if test="pojo.realName != null"> `real_name` = #{pojo.realName} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="queryOneById" resultMap="AllColumnMap">
+        select <include refid="all_column"/> from user where id = #{id}
+    </select>
+    <select id="queryList" resultMap="AllColumnMap">
+        select <include refid="all_column"/> from user
+    </select>
+    <select id="selectPage" resultMap="AllColumnMap">
+        select <include refid="all_column"/> from user
+    </select>
+</mapper>
+
