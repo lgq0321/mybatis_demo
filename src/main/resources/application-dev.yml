@@ -69,7 +69,26 @@ pagehelper:
   params: count=countSql
 
 #showSql
+#日志级别
 logging:
+  file:
+    max-size: 1MB
+    max-history: 90
+    path: /var/log/
   level:
-    com.example.mybatis.dao : debug
+    # root日志以WARN级别输出
+    root: info
+    org.springframework.boot.actuate: info
+#    org.zalando.logbook: TRACE
+    # 此包下所有class以DEBUG级别输出
+    com.example.mybatis: debug
+    com.example.mybatis.dao: debug
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%t]){faint} %clr(%-40.40logger{39}){cyan}[lineno:%line]    %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39}[lineno:%line]: %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
 
+#springfox:
+#  documentation:
+#    swagger:
+#      v2:
+#        path: /api/pub/system/api-docs

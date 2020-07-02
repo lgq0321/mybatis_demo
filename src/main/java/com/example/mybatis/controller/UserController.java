@@ -2,7 +2,7 @@ package com.example.mybatis.controller;
 
 import com.example.mybatis.service.UserService;
 import com.example.mybatis.util.PageRequest;
-import com.example.mybatis.util.ResultType;
+import com.example.mybatis.util.ResultTypeMy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +19,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/queryList")
-    public ResultType users(){
+    public ResultTypeMy users(){
         return userService.queryList();
     }
+
     @RequestMapping("/queryOne")
-    public ResultType user(){
+    public ResultTypeMy user(){
         return userService.queryOne(2L);
     }
 

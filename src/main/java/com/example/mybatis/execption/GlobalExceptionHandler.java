@@ -1,6 +1,6 @@
 package com.example.mybatis.execption;
 
-import com.example.mybatis.util.ResultType;
+import com.example.mybatis.util.ResultTypeMy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -19,20 +19,20 @@ public class GlobalExceptionHandler {
 	 * 处理自定义异常
 	 */
 	@ExceptionHandler(GlobalException.class)
-	public ResultType handlerSgException(GlobalException e){
+	public ResultTypeMy handlerSgException(GlobalException e){
 		logger.error("--- 已捕获异常 ---"+ e.getCode() +" "+ e );
-		return ResultType.builder().code(e.getCode()).message(e.getMessage()).build();
+		return ResultTypeMy.builder().code(e.getCode()).message(e.getMessage()).build();
 	}
 
 	@ExceptionHandler(DuplicateKeyException.class)
-	public ResultType handleDuplicateKeyException(DuplicateKeyException e){
+	public ResultTypeMy handleDuplicateKeyException(DuplicateKeyException e){
 		logger.error(e.getMessage(), e);
-		return ResultType.error("数据库中已存在该记录");
+		return ResultTypeMy.error("数据库中已存在该记录");
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResultType handleException(Exception e){
+	public ResultTypeMy handleException(Exception e){
 		logger.error(e.getMessage(), e);
-		return ResultType.error(e.getMessage());
+		return ResultTypeMy.error(e.getMessage());
 	}
 }

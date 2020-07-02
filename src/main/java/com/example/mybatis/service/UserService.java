@@ -2,23 +2,23 @@ package com.example.mybatis.service;
 
 import com.example.mybatis.entity.User;
 import com.example.mybatis.util.PageRequest;
-import com.example.mybatis.util.ResultType;
+import com.example.mybatis.util.ResultTypeMy;
 
 import java.util.List;
 
 public interface UserService{
 
-    ResultType queryList();
+    ResultTypeMy queryList();
 
-    ResultType queryOne(Long id);
+    ResultTypeMy queryOne(Long id);
 
-    ResultType insert(User pojo);
+    ResultTypeMy insert(User pojo);
 
-    ResultType insertSelective(User pojo);
+    ResultTypeMy insertSelective(User pojo);
 
-    ResultType insertList(List<User> pojos);
+    ResultTypeMy insertList(List<User> pojos);
 
-    ResultType update(User pojo);
+    ResultTypeMy update(User pojo);
     /**
      * 分页查询接口
      * 这里统一封装了分页请求和结果，避免直接引入具体框架的分页对象, 如MyBatis或JPA的分页对象
@@ -27,5 +27,5 @@ public interface UserService{
      * @param pageRequest 自定义，统一分页查询请求
      * @return PageResult 自定义，统一分页查询结果
      */
-    ResultType findPage(PageRequest pageRequest);
+    ResultTypeMy findPage(PageRequest pageRequest);
 }
