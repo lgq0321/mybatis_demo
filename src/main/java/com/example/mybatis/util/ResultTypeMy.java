@@ -42,19 +42,19 @@ public class ResultTypeMy<T>{
         this.data = data;
     }
 
-    public static <T> ResultTypeMy success(T data) {
-        return new ResultTypeMy("0", "success",data);
+    public static <T> ResultTypeMy<T> success(T data) {
+        return new ResultTypeMy<T>("0", "success",data);
     }
 
-    public static <T> ResultTypeMy success() {
-        return new ResultTypeMy("0", "success");
+    public static <T> ResultTypeMy<T> success() {
+        return new ResultTypeMy<T>("0", "success");
     }
 
-    public static ResultTypeMy error(String code, String messgae) {
-        return new ResultTypeMy(code,messgae);
+    public static <T> ResultTypeMy <T> error(String code, String messgae) {
+        return new ResultTypeMy<T>(code,messgae);
     }
 
-    public static ResultTypeMy error(String messgae) {
-        return new ResultTypeMy("2",messgae);
+    public static <T> ResultTypeMy<T> error(String messgae) {
+        return new ResultTypeMy<T>("2",messgae);
     }
 }

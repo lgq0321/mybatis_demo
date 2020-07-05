@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     private UserService userService;
 
     @Override
-    public ResultTypeMy queryList() {
+    public ResultTypeMy<List<User>> queryList() {
         try{
             userService.update(User.builder().id(1L).userName("测试").build());
         }catch (Exception e){

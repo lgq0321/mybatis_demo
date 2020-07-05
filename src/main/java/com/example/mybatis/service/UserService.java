@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserService{
 
-    ResultTypeMy queryList();
+    ResultTypeMy<List<User>> queryList();
 
     ResultTypeMy queryOne(Long id);
 
